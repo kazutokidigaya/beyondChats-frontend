@@ -1,113 +1,91 @@
-# Bytive - Todo Manager
+# beyondChats - AI Chatbot
+
+## Live Website
+
+Check out the live deployment here:  
+🔗 [BeyondChats](https://beyondchat-ten.vercel.app/)
 
 ## Features
 
-- **User Authentication**: Users can sign up, log in, and log out securely.
-- **Create Todos**: Users can create new tasks with a title, description, and status.
-- **View Todos**: View all tasks arranged in a grid with title, description, and status.
-- **Edit Todos**: Update the status of an existing task.
-- **Delete Todos**: Remove tasks with a single click.
-- **Responsive Design**: Frontend is styled with Tailwindcss to work on all devices.
+- **User Authentication**: Secure registration, login, and Google OAuth support.
+- **Email Verification**: Users must verify their email before accessing chatbot features.
+- **Organization Setup**: Users enter their company details and auto-fetch metadata.
+- **Website Scraping**: Scrape and analyze the company's website to train the chatbot.
+- **AI Chatbot Training**: Automatic chatbot training based on scraped website data.
+- **Chatbot Integration**: Users receive an embeddable script for chatbot deployment.
+- **Test Chatbot**: Users can interact with the chatbot before deploying it.
+- **Confetti UI for Success**: Beautiful animations when integration is successful.
+- **Responsive Design**: Fully optimized for mobile and desktop using TailwindCSS.
 
 ---
 
 ## Prerequisites
 
-- **Node.js**: Ensure you have Node.js installed.
-- **MongoDB**: Setup a MongoDB database and have the URI ready.
+Before running this project, ensure you have:
+
+- **Node.js**: Installed on your system.
 - **Git**: Version control to clone the repository.
 
 ---
 
 ## Steps to Clone and Run the Project Locally
 
-### 1. Clone the Repository
+### 1️ Clone the Repository
 
-Clone the repository using the following command:
-
-```bash
-git clone https://github.com/kazutokidigaya/bytive.git
-```
-
-### 2. Setting up the Backend
-
-Navigate to the backend directory:
+Use the following command to clone the repository:
 
 ```bash
-cd backend
+git clone https://github.com/kazutokidigaya/beyondChats-frontend.git
 ```
 
-Install dependencies:
+Navigate into the project directory:
 
 ```bash
-npm install
+cd beyondChats-frontend
 ```
 
-Replace the server.js file with the following code:
+### 2 Install Dependencies
 
-```bash
-import express from "express";
-import cors from "cors";
-import cookieParser from "cookie-parser";
-import dotenv from "dotenv";
-import connectDb from "./config/db.js";
-import userRoutes from "./routes/userRoutes.js";
-import taskRoutes from "./routes/taskRoutes.js";
-
-dotenv.config();
-const PORT = process.env.PORT || 5000;
-const app = express();
-
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true, // Enable cookies
-  })
-);
-app.use(express.json());
-app.use(cookieParser());
-app.use("/api/auth", userRoutes);
-app.use("/api/tasks", taskRoutes);
-
-app.listen(PORT, () => {
-  console.log(`Server is running on PORT: http://localhost:${PORT}`);
-  connectDb();
-});
-```
-
-Create a .env file in the backend folder and add the following:
-
-```bash
-PORT=5000
-MONGO_URI=<Your MongoDB URI>
-JWT_ACCESS_TOKEN_SECRET=<Your JWT Access Token Secret>
-JWT_REFRESH_TOKEN_SECRET=<Your JWT Refresh Token Secret>
-FRONTEND_URL=http://localhost:3000
-```
-
-Start the backend server:
-
-```bash
-npm start
-```
-
-### 3. Setting up the Frontend
-
-Open Up a new terminal in root directory and Navigate to the frontend directory:
-
-```bash
-cd frontend
-```
-
-Install dependencies:
+Run the following command to install all necessary packages:
 
 ```bash
 npm install
 ```
 
-Start the frontend server:
+### 3 Environment Variables
+
+Create a .env file in the root directory and add the following:
 
 ```bash
-npm run start
+VITE_FIREBASE_API_KEY=<Your Firebase API Key>
+VITE_FIREBASE_AUTH_DOMAIN=<Your Firebase Auth Domain>
+VITE_FIREBASE_PROJECT_ID=<Your Firebase Project ID>
+VITE_FIREBASE_STORAGE_BUCKET=<Your Firebase Storage Bucket>
+VITE_FIREBASE_MESSAGING_SENDER_ID=<Your Firebase Messaging Sender ID>
+VITE_FIREBASE_APP_ID=<Your Firebase App ID>
 ```
-# beyondChats-frontend
+
+### 4 Start the Development Server
+
+To start the frontend on your local machine, run:
+
+```bash
+npm run dev
+```
+
+## 🔧 Technologies Used
+
+React.js – Frontend framework.
+
+Vite – Fast build tool.
+
+TailwindCSS – For styling and responsiveness.
+
+Firebase Authentication – Secure user authentication.
+
+Axios – API requests handling.
+
+React Router – Navigation and protected routes.
+
+React Hot Toast – Notifications.
+Canvas-Confetti – Success animations.
